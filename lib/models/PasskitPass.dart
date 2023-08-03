@@ -148,7 +148,6 @@ class PasskitPass extends Equatable {
   });
 
   factory PasskitPass.fromJson(Map<String, dynamic> json) {
-    print(json.toString());
     return PasskitPass(
       formatVersion: json['formatVersion'] as int,
       passTypeIdentifier: json['passTypeIdentifier'],
