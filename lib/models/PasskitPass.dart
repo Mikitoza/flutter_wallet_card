@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_wallet_card/helpers/color.dart';
@@ -146,6 +148,7 @@ class PasskitPass extends Equatable {
   });
 
   factory PasskitPass.fromJson(Map<String, dynamic> json) {
+    log(json.toString());
     return PasskitPass(
       formatVersion: json['formatVersion'] as int,
       passTypeIdentifier: json['passTypeIdentifier'],
