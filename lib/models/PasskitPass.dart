@@ -170,11 +170,9 @@ class PasskitPass extends Equatable {
       authenticationToken: json['authenticationToken'],
       appLaunchURL: json['appLaunchURL'],
       associatedStoreIdentifiers:
-          (json['associatedStoreIdentifiers'] as List<dynamic>?)
-              ?.map((e) => e as int)
-              .toList(),
+          (json['associatedStoreIdentifiers'] as List<dynamic>?)?.map((e) => e as int).toList(),
       expirationDate: json['expirationDate'],
-      voided: json['voided'] as bool?,
+      voided: !(json['voided'] is bool?) ? json['voided'] == 0 : json['voided'] as bool?,
       sharingProhibited: json['sharingProhibited'] as bool?,
       relevantDate: json['relevantDate'],
       maxDistance: json['maxDistance'] as int?,
@@ -198,26 +196,21 @@ class PasskitPass extends Equatable {
       'teamIdentifier': teamIdentifier,
       'webServiceURL': webServiceURL,
       'authenticationToken': authenticationToken,
-      'barcodes': barcodes
-          ?.map((e) => e.toJson()..removeWhere((_, value) => value == null))
-          .toList(),
+      'barcodes':
+          barcodes?.map((e) => e.toJson()..removeWhere((_, value) => value == null)).toList(),
       'nfc': nfc?.toJson(),
       'backgroundColor': fromColor(backgroundColor),
       'foregroundColor': fromColor(foregroundColor),
       'labelColor': fromColor(labelColor),
       'groupingIdentifier': groupingIdentifier,
       'logoText': logoText,
-      'storeCard': storeCard?.toJson()
-        ?..removeWhere((_, value) => value == null),
+      'storeCard': storeCard?.toJson()?..removeWhere((_, value) => value == null),
       'generic': generic?.toJson()?..removeWhere((_, value) => value == null),
-      'eventTicket': eventTicket?.toJson()
-        ?..removeWhere((_, value) => value == null),
+      'eventTicket': eventTicket?.toJson()?..removeWhere((_, value) => value == null),
       'coupon': coupon?.toJson()?..removeWhere((_, value) => value == null),
-      'boardingPass': boardingPass?.toJson()
-        ?..removeWhere((_, value) => value == null),
-      'locations': locations
-          ?.map((e) => e.toJson()..removeWhere((_, value) => value == null))
-          .toList(),
+      'boardingPass': boardingPass?.toJson()?..removeWhere((_, value) => value == null),
+      'locations':
+          locations?.map((e) => e.toJson()..removeWhere((_, value) => value == null)).toList(),
       'maxDistance': maxDistance,
       'relevantDate': relevantDate,
       'associatedStoreIdentifiers': associatedStoreIdentifiers,
